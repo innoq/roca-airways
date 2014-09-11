@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Airliner Seat Selection</title>
+	<style>
+body {
+	width: 90%;
+	margin: 0 auto;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+i {
+	text-shadow: 1px 1px 2px #CCC; /* XXX: tacky!? */
+}
+
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+.unavailable * { /* XXX: bad selector? */
+	cursor: not-allowed;
+}
+
+.unavailable {
+	opacity: 0.5;
+}
+
+.vis-alt { /* XXX: awkward name */
+	display: none;
+}
+
+/* basic */
+
+.seats {
+	overflow: auto; /* contain floats */
+	padding: 10px;
+	list-style-type: none;
+	background-color: #FAFAFA;
+}
+
+.seats li {
+	float: left;
+	width: 4em;
+	height: 4em;
+	line-height: 4em;
+	text-align: center;
+}
+
+.seats label { /* fill container */
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* augemented */
+
+.seats.augmented .unavailable {
+	opacity: 1; /* neutralizes basic version -- XXX: hacky */
+}
+
+.seats.augmented li {
+	background-image: url(img/seat.svg#unoccupied);
+	background-size: cover;
+}
+
+.seats.augmented li:not(.unavailable) {
+	cursor: pointer;
+}
+
+.seats.augmented li.selected {
+	background-image: url(img/seat.svg#selected);
+}
+
+.seats.augmented li.occupied {
+	background-image: url(img/seat.svg#occupied);
+}
+
+.seats.augmented label {
+	margin-left: -999em;
+}
+	</style>
+</head>
+
+<body>
+	<h1>Airliner Seat Selection</h1>
+	<p>
+		Thank you for flying <i>ROCAir</i>.
+		Please select your seat below.
+	</p>
+
+	<p class="vis-alt">
+		Rows are numbered from nose to tail. A and F are window, C and D aisle
+		seats. A-C are on the left, D-F on the right.
+	</p>
+
+	<ul class="seats">
+		<li>
+			<label>
+				<input type="radio" name="seat" value="7C">
+				7C
+			</label>
+		</li>
+		<li class="unavailable occupied">
+			<label>
+				<input type="radio" name="seat" value="7D" disabled>
+				7D
+			</label>
+		</li>
+		<li class="unavailable vip">
+			<label title="occupied">
+				<input type="radio" name="seat" value="7E" disabled>
+				7E
+			</label>
+		</li>
+		<li class="selected">
+			<label>
+				<input type="radio" name="seat" value="7F" checked>
+				7F
+			</label>
+		</li>
+	</ul>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+	<script>
+(function() {
+
+"use strict";
+
+// ensure inline SVG support - adapted from Modernizr (http://modernizr.com)
+var div = document.createElement("div");
+div.innerHTML = "<svg />";
+var svg = div.firstChild;
+svg = svg && svg.namespaceURI === "http://www.w3.org/2000/svg";
+if(!svg) {
+	return;
+}
+
+// clone list -- XXX: DEBUG
+var list = $(".seats").clone();
+var controls = list.find("input:radio");
+controls.attr("name", controls.attr("name") + "-alt");
+list.appendTo(document.body);
+
+// fancy controls
+
+var optionSelector = "li:not(.unavailable)";
+var fieldSelector = "input:radio";
+
+list.addClass("augmented");
+list.on("click", optionSelector, onSelect);
+list.on("change", fieldSelector, onSelect);
+
+function onSelect(ev) {
+	// TODO: guard against duplicate invocation (both change & click) and/or deactivation?
+	$(fieldSelector, this).prop("checked", true).
+		closest(".augmented").find(optionSelector).each(sync);
+}
+
+// two-way synchronization of underlying control and fancy representation
+function sync(i, node) {
+	var el = $(node);
+	var selected = el.find(fieldSelector).prop("checked");
+	el.toggleClass("selected", selected);
+}
+
+}());
+	</script>
+</body>
+
+</html>
