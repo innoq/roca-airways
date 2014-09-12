@@ -58,6 +58,10 @@ input[type="checkbox"][disabled],
 	opacity: 1; /* neutralizes basic version -- XXX: hacky */
 }
 
+.seats.augmented li.focused {
+	transform: scale(1.2);
+}
+
 .seats.augmented li {
 	background-image: url(img/seat.svg#unoccupied);
 	background-size: cover;
@@ -149,6 +153,19 @@ var fieldSelector = "input:radio";
 list.addClass("augmented");
 list.on("click", optionSelector, onSelect);
 list.on("change", fieldSelector, onSelect);
+list.on("focus", fieldSelector, onFocus);
+list.on("blur", fieldSelector, onBlur);
+
+function onFocus(ev) {
+	var field = onBlur.apply(this, arguments);
+	field.addClass("focused");
+}
+
+function onBlur(ev) {
+	var field = $(this).closest(optionSelector);
+	field.closest(".augmented").find(optionSelector).removeClass("focused");
+	return field;
+}
 
 function onSelect(ev) {
 	// TODO: guard against duplicate invocation (both change & click) and/or deactivation?
