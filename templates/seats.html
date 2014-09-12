@@ -24,7 +24,8 @@
 					{{ optAttr("title", seat.desc) }}>
 			<label>
 				<input type="radio" name="seat" value="{{ seat.id }}"
-					{{ optAttr("disabled", seat.unavailable()) }}>
+					{{ optAttr("disabled", seat.unavailable()) }}
+					{{ optAttr("checked", seat.selected) }}>
 				{{ seat.label() }}
 			</label>
 		</li>

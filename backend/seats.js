@@ -1,6 +1,8 @@
 /*jslint vars: true, plusplus: true, node: true, white: true */
 "use strict";
 
+var util = require("./util");
+
 module.exports = function(rows) {
 	var cols = 6; // each row consists of 2 * 3 seats
 	var seats = [];
@@ -20,6 +22,18 @@ module.exports = function(rows) {
 		var seat = new Seat(id, desc, vip, occupied);
 		seats.push(seat);
 	}
+
+	// preselect random seat
+	var selection;
+	while(!selection) {
+		var index = util.randomInt(0, seats.length - 1);
+		var seat = seats[index];
+		if(!seat.unavailable()) {
+			seat.selected = true;
+			selection = seat;
+		}
+	}
+
 	return seats;
 };
 

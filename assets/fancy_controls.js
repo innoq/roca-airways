@@ -15,6 +15,11 @@ function fancyControls(selector) {
 		on("change", fieldSelector, onSelect).
 		on("focus", fieldSelector, onFocus).
 		on("blur", fieldSelector, onBlur);
+
+	// initialize state -- XXX: somewhat hacky
+	var selected = container.find(fieldSelector + ":checked").
+		closest(optionSelector);
+	onSelect.call(selected[0]);
 }
 
 function onFocus(ev) {
