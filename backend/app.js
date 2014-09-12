@@ -14,9 +14,16 @@ app.get("/", function(req, res) {
 	res.redirect("/check-in/rc-" + flightNumber);
 });
 
-app.get("/check-in/:flight", function(req, res) {
-	var flightID = req.params.flight.toUpperCase();
+app.all("/check-in/:flight", function(req, res) {
+	// validate request method -- XXX: we shouldn't be doing this manually
+	var methods = ["GET", "POST"]; // TODO: OPTIONS, HEAD?
+	if(methods.indexOf(req.method) === -1) {
+		res.set("Allow", methods.join(", "));
+		res.status(405).end();
+		return;
+	}
 
+	var flightID = req.params.flight.toUpperCase();
 	if(flightID.indexOf("RC-") !== 0) { // someone's being clever
 		res.status(404).send("We're afraid flight " + flightID +
 				" is not operated by ROCAir.");
