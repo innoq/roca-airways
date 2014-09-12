@@ -4,14 +4,14 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-i {
-	text-shadow: 1px 1px 2px #CCC; /* XXX: tacky!? */
-}
-
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
 .unavailable * { /* XXX: bad selector? */
 	cursor: not-allowed;
+}
+
+.organization {
+	text-shadow: 1px 1px 2px #CCC; /* XXX: tacky!? */
 }
 
 .unavailable {
