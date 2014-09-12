@@ -72,6 +72,11 @@ input[type="checkbox"][disabled],
 	background-image: url(seat.svg#occupied);
 }
 
+.seats.augmented li.vip { /* XXX: crude */
+	background-color: #F00;
+	opacity: 0.5;
+}
+
 .seats.augmented label {
 	margin-left: -999em;
 }
