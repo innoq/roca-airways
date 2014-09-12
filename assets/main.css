@@ -1,0 +1,77 @@
+body {
+	width: 90%;
+	margin: 0 auto;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+i {
+	text-shadow: 1px 1px 2px #CCC; /* XXX: tacky!? */
+}
+
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+.unavailable * { /* XXX: bad selector? */
+	cursor: not-allowed;
+}
+
+.unavailable {
+	opacity: 0.5;
+}
+
+.vis-alt { /* XXX: awkward name */
+	display: none;
+}
+
+/* basic */
+
+.seats {
+	overflow: auto; /* contain floats */
+	padding: 10px;
+	list-style-type: none;
+	background-color: #FAFAFA;
+}
+
+.seats li {
+	float: left;
+	width: 4em;
+	height: 4em;
+	line-height: 4em;
+	text-align: center;
+}
+
+.seats label { /* fill container */
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* augemented */
+
+.seats.augmented .unavailable {
+	opacity: 1; /* neutralizes basic version -- XXX: hacky */
+}
+
+.seats.augmented li.focused {
+	transform: scale(1.2);
+}
+
+.seats.augmented li {
+	background-image: url(seat.svg#unoccupied);
+	background-size: cover;
+}
+
+.seats.augmented li:not(.unavailable) {
+	cursor: pointer;
+}
+
+.seats.augmented li.selected {
+	background-image: url(seat.svg#selected);
+}
+
+.seats.augmented li.occupied {
+	background-image: url(seat.svg#occupied);
+}
+
+.seats.augmented label {
+	margin-left: -999em;
+}
