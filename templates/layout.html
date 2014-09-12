@@ -4,16 +4,29 @@
 <head>
 	<meta charset="utf-8">
 	<title>{{ title }}</title>
+	{% if includeCSS %}
 	<link rel="stylesheet" href="/assets/main.css">
+	{% endif %}
 </head>
 
 <body>
 	<h1>{{ title }}</h1>
 	{% block body %}{% endblock %}
 
+	{% if devLinks %}
+	<div class="debug">
+		{% for link in devLinks %}
+		<a href="{{ link.uri }}" title="{{ link.desc }}">{{ link.label }}</a>
+		{% endfor %}
+	</div>
+	{% endif %}
+
+	{% if includeJS %}
+	<link rel="stylesheet" href="/assets/main.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 	<script src="/assets/fancy_controls.js"></script>
 	<script src="/assets/main.js"></script>
+	{% endif %}
 </body>
 
 </html>

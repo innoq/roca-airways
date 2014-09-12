@@ -39,7 +39,10 @@ app.all("/check-in/:flight", function(req, res) {
 
 	var params = {
 		title: app.get("title"),
-		flightID: flightID
+		flightID: flightID,
+		includeCSS: req.query.css !== "0",
+		includeJS: req.query.js !== "0",
+		devLinks: devLinks(req.path)
 	};
 	if(req.method === "GET") {
 		params.checkInURI = ""; // i.e. self
@@ -50,3 +53,24 @@ app.all("/check-in/:flight", function(req, res) {
 		res.render("confirmation.html", params);
 	}
 });
+
+function devLinks(uri) {
+	var links = [{
+		label: "✓ CSS — ✓ JavaScript",
+		desc: "enable CSS and JavaScript",
+		queryString: null
+	}, {
+		label: "✓ CSS — ✘ JavaScript",
+		desc: "disable JavaScript",
+		queryString: "js=0"
+	}, {
+		label: "✘ CSS — ✘ JavaScript",
+		desc: "disable CSS and JavaScript",
+		queryString: "css=0&js=0"
+	}];
+	links.forEach(function(link) {
+		link.uri = link.queryString ? [uri, link.queryString].join("?") : uri;
+		delete link.queryString;
+	});
+	return links;
+}

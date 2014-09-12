@@ -97,3 +97,17 @@ input[type=checkbox][disabled],
 .seats.augmented label {
 	margin-left: -999em;
 }
+
+/* dev controls */
+
+.debug {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 1em;
+	text-align: right;
+}
+
+.debug a {
+	display: block;
+}
