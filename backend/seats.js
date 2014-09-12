@@ -52,7 +52,7 @@ Seat.prototype.class = function() {
 			prop = prop.call(self);
 		}
 		return prop ? name : null;
-	}).join(" ");
+	}).join(" ").trim();
 };
 
 Seat.prototype.label = function() { // XXX: unnecessary
