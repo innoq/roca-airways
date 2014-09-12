@@ -17,7 +17,7 @@
 	seats. A-C are on the left, D-F on the right.
 </p>
 
-<form class="cabin">
+<form action="{{ checkInURI }}" method="post" class="cabin">
 	<ul class="seats">
 		{% for seat in seats %}
 		<li {{ optAttr("class", seat.class()) }}
@@ -31,5 +31,6 @@
 		</li>
 		{% endfor %}
 	</ul>
+	<input type="submit" value="Auswahl bestätigen">
 </form>
 {% endblock %}

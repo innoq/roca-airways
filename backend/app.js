@@ -2,6 +2,7 @@
 "use strict";
 
 var express = require("express");
+var bodyParser = require("body-parser");
 var nunjucks = require("nunjucks");
 var path = require("path");
 var generateSeats = require("./seats");
@@ -13,6 +14,7 @@ app.set("title", "ROCAir Seat Selector");
 nunjucks.configure("templates", { autoescape: true, express: app });
 
 app.use("/assets", express.static(path.join(__dirname, "..", "assets")));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", function(req, res) {
 	var flightNumber = util.randomInt(100, 9999);
@@ -35,10 +37,16 @@ app.all("/check-in/:flight", function(req, res) {
 		return;
 	}
 
-	res.render("seats.html", {
+	var params = {
 		title: app.get("title"),
-		flightID: flightID,
-		checkInURI: "", // i.e. self
-		seats: generateSeats(24)
-	});
+		flightID: flightID
+	};
+	if(req.method === "GET") {
+		params.checkInURI = ""; // i.e. self
+		params.seats = generateSeats(24);
+		res.render("seats.html", params);
+	} else {
+		params.selectedSeat = req.body.seat;
+		res.render("confirmation.html", params);
+	}
 });

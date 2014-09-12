@@ -4,8 +4,12 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-input[type="radio"][disabled],
-input[type="checkbox"][disabled],
+input[type=submit] {
+	width: 100%;
+}
+
+input[type=radio][disabled],
+input[type=checkbox][disabled],
 .unavailable,
 .unavailable * { /* XXX: bad selector? */
 	cursor: not-allowed;
