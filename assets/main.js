@@ -11,13 +11,9 @@ if(!svg) {
 	return;
 }
 
-// clone list -- XXX: DEBUG
-var list = $(".seats").clone();
-var controls = list.find("input:radio");
-controls.attr("name", controls.attr("name") + "-alt");
-list.appendTo(document.body);
-
 // fancy controls
+
+var list = $(".seats");
 
 var optionSelector = "li:not(.unavailable)";
 var fieldSelector = "input:radio";

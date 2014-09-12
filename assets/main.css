@@ -24,11 +24,17 @@ input[type="checkbox"][disabled],
 
 /* basic */
 
+.cabin {
+	width: 30em; /* corresponds to seats per row + aisle + padding */
+	border-radius: 14em; /* corresponds to seats per row + aisle */
+	padding: 14em 0 14em; /* compensate for border radius */
+	background-color: #FAFAFA;
+}
+
 .seats {
 	overflow: auto; /* contain floats */
-	padding: 10px;
+	padding: 1em; /* avoids clipping for highlighted seats */
 	list-style-type: none;
-	background-color: #FAFAFA;
 }
 
 .seats li {
@@ -37,6 +43,10 @@ input[type="checkbox"][disabled],
 	height: 4em;
 	line-height: 4em;
 	text-align: center;
+}
+
+.seats li:nth-child(6n+4) { /* aisle */
+	margin-left: 4em;
 }
 
 .seats label { /* fill container */

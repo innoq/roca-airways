@@ -1,6 +1,10 @@
+/*jslint vars: true, node: true, white: true */
+"use strict";
+
 var express = require("express");
 var nunjucks = require("nunjucks");
 var path = require("path");
+var generateSeats = require("./seats");
 
 var app = express();
 var app = module.exports = express();
@@ -32,7 +36,8 @@ app.all("/check-in/:flight", function(req, res) {
 
 	res.render("seats.html", {
 		title: app.get("title"),
-		flightID: flightID
+		flightID: flightID,
+		seats: generateSeats(24)
 	});
 });
 

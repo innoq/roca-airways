@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
+{# optional attribute; only rendered if value is truthy #}
+{% macro optAttr(name, value) -%}
+	{% if value %}{{ name }}="{{ value }}"{% endif %}
+{%- endmacro %}
+
 {% block body %}
 <p>
 	Thank you for flying <i class="organization">ROCAir</i>. Web check-in for
@@ -12,32 +17,18 @@
 	seats. A-C are on the left, D-F on the right.
 </p>
 
-<form>
+<form class="cabin">
 	<ul class="seats">
-		<li>
+		{% for seat in seats %}
+		<li {{ optAttr("class", seat.class()) }}>
 			<label>
-				<input type="radio" name="seat" value="7C">
-				7C
+				<input type="radio" name="seat" value="{{ seat.id }}"
+					{{ optAttr("title", seat.desc) }}
+					{{ optAttr("disabled", seat.unavailable()) }}>
+				{{ seat.label() }}
 			</label>
 		</li>
-		<li class="unavailable occupied">
-			<label>
-				<input type="radio" name="seat" value="7D" disabled>
-				7D
-			</label>
-		</li>
-		<li class="unavailable vip">
-			<label title="occupied">
-				<input type="radio" name="seat" value="7E" disabled>
-				7E
-			</label>
-		</li>
-		<li class="selected">
-			<label>
-				<input type="radio" name="seat" value="7F" checked>
-				7F
-			</label>
-		</li>
+		{% endfor %}
 	</ul>
 </form>
 {% endblock %}
