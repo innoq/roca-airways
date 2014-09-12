@@ -20,10 +20,10 @@
 <form class="cabin">
 	<ul class="seats">
 		{% for seat in seats %}
-		<li {{ optAttr("class", seat.class()) }}>
+		<li {{ optAttr("class", seat.class()) }}
+					{{ optAttr("title", seat.desc) }}>
 			<label>
 				<input type="radio" name="seat" value="{{ seat.id }}"
-					{{ optAttr("title", seat.desc) }}
 					{{ optAttr("disabled", seat.unavailable()) }}>
 				{{ seat.label() }}
 			</label>
