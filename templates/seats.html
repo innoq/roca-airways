@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-	<meta charset="utf-8">
-	<title>{{ title }}</title>
-	<link rel="stylesheet" href="assets/main.css">
-</head>
+{% block body %}
+<p>
+	Thank you for flying <i>ROCAir</i>. Please select your seat below.
+</p>
 
-<body>
-	<h1>{{ title }}</h1>
-	<p>
-		Thank you for flying <i>ROCAir</i>. Please select your seat below.
-	</p>
+<p class="vis-alt">
+	Rows are numbered from nose to tail. A and F are window, C and D aisle
+	seats. A-C are on the left, D-F on the right.
+</p>
 
-	<p class="vis-alt">
-		Rows are numbered from nose to tail. A and F are window, C and D aisle
-		seats. A-C are on the left, D-F on the right.
-	</p>
-
+<form>
 	<ul class="seats">
 		<li>
 			<label>
@@ -44,9 +37,5 @@
 			</label>
 		</li>
 	</ul>
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-	<script src="assets/main.js"></script>
-</body>
-
-</html>
+</form>
+{% endblock %}
