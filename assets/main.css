@@ -99,7 +99,7 @@ input[type=checkbox][disabled],
 }
 
 .seats.augmented .row li.vip { /* XXX: crude */
-	margin-bottom: 1em; /* extra legroom */
+	margin-bottom: 2em; /* extra legroom */
 	background-color: #FFD700;
 	opacity: 0.5;
 }
