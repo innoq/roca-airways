@@ -68,6 +68,7 @@ input[type=checkbox][disabled],
 
 .seats.augmented li.focused {
 	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
 }
 
 .seats.augmented li {
