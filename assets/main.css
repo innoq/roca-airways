@@ -72,7 +72,7 @@ input[type=checkbox][disabled],
 
 .seats.augmented li {
 	margin-bottom: 1em;
-	background-image: url(seat.svg#unoccupied);
+	background-image: url(seat_unoccupied.svg);
 	background-size: cover;
 }
 
@@ -81,11 +81,11 @@ input[type=checkbox][disabled],
 }
 
 .seats.augmented li.selected {
-	background-image: url(seat.svg#selected);
+	background-image: url(seat_selected.svg);
 }
 
 .seats.augmented li.occupied {
-	background-image: url(seat.svg#occupied);
+	background-image: url(seat_occupied.svg);
 }
 
 .seats.augmented li.vip { /* XXX: crude */

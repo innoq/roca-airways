@@ -37,9 +37,9 @@
 
 	.grad-start { stop-color: #F8F8F8; }
 	.grad-stop { stop-color: #EEE; }
-
 	]]></style>
-	<defs>
+	<!-- NB: `translate` compensates for stroke -->
+	<g class="selected" transform="translate(1, 1)">
 		<linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
 			<stop class="grad-start" offset="0%" />
 			<stop class="grad-stop" offset="100%" />
@@ -70,16 +70,5 @@
 				<ellipse cx="24" cy="26" rx="12" ry="10" class="hair" />
 			</g>
 		</g>
-
-	</defs>
-
-	<!-- NB: `translate` compensates for stroke -->
-	<use xlink:href="#seat" transform="translate(1, 1)"></use>
-	<use xlink:href="#seat" class="unoccupied" transform="translate(1, 51)"></use>
-	<use xlink:href="#seat" class="selected" transform="translate(1, 101)"></use>
-
-	<!-- sprites -->
-	<view id="occupied" viewBox="0 0 50 50" />
-	<view id="unoccupied" viewBox="0 50 50 50" />
-	<view id="selected" viewBox="0 100 50 50" />
+	</g>
 </svg>
