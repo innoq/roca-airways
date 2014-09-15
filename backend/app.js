@@ -46,7 +46,7 @@ app.all("/check-in/:flight", function(req, res) {
 	};
 	if(req.method === "GET") {
 		params.checkInURI = ""; // i.e. self
-		params.seats = generateSeats(24);
+		params.seats = generateSeats(24, 6, 0.3);
 		res.render("seats.html", params);
 	} else {
 		params.selectedSeat = req.body.seat;

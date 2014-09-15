@@ -19,15 +19,21 @@
 
 <form action="{{ checkInURI }}" method="post" class="cabin">
 	<ul class="seats">
-		{% for seat in seats %}
-		<li {{ optAttr("class", seat.class()) }} {{
-				optAttr("title", seat.desc) }}>
-			<label>
-				<input type="radio" name="seat" value="{{ seat.id }}" {{
-						optAttr("disabled", seat.unavailable()) }} {{
-						optAttr("checked", seat.selected) }}>
-				{{ seat.label() }}
-			</label>
+		{% for row in seats %}
+		<li>
+			<ul class="row">
+				{% for seat in row %}
+				<li {{ optAttr("class", seat.class()) }} {{
+						optAttr("title", seat.desc) }}>
+					<label>
+						<input type="radio" name="seat" value="{{ seat.id }}" {{
+								optAttr("disabled", seat.unavailable()) }} {{
+								optAttr("checked", seat.selected) }}>
+						{{ seat.label() }}
+					</label>
+				</li>
+				{% endfor %}
+			</ul>
 		</li>
 		{% endfor %}
 	</ul>

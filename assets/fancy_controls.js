@@ -5,7 +5,7 @@
 
 "use strict";
 
-var optionSelector = "li:not(.unavailable)"; // XXX: hard-coded
+var optionSelector = ".row li:not(.unavailable)"; // XXX: hard-coded
 var fieldSelector = "input:radio"; // XXX: hard-coded (should also work with checkboxes)
 
 function fancyControls(selector) {

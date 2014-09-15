@@ -32,17 +32,26 @@ input[type=checkbox][disabled],
 .cabin {
 	width: 30em; /* corresponds to seats per row + aisle + padding */
 	border-radius: 14em; /* corresponds to seats per row + aisle */
-	padding: 14em 0 14em; /* compensate for border radius */
+	padding: 14em 0; /* compensate for border radius */
 	background-color: #FAFAFA;
 }
 
-.seats {
-	overflow: auto; /* contain floats */
-	padding: 1em; /* avoids clipping for highlighted seats */
+.seats,
+.row {
+	margin: 0;
+	padding: 0;
 	list-style-type: none;
 }
 
-.seats li {
+.seats {
+	padding: 0 1em;
+}
+
+.row {
+	overflow: visible; /* avoids clipping and scrolling on focus-scaled seat */
+}
+
+.row li {
 	float: left;
 	width: 4em;
 	height: 4em;
@@ -50,11 +59,11 @@ input[type=checkbox][disabled],
 	text-align: center;
 }
 
-.seats li:nth-child(6n+4) { /* aisle */
+.row li:nth-child(6n+4) { /* aisle */
 	margin-left: 4em;
 }
 
-.seats label { /* fill container */
+.row label { /* fill container */
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -66,31 +75,31 @@ input[type=checkbox][disabled],
 	opacity: 1; /* neutralizes basic version -- XXX: hacky */
 }
 
-.seats.augmented li.focused {
+.seats.augmented .row li.focused {
 	transform: scale(1.2);
 	-webkit-transform: scale(1.2);
 }
 
-.seats.augmented li {
-	margin-bottom: 1em;
+.seats.augmented .row li {
+	margin-bottom: 1em; /* legroom */
 	background-image: url(seat_unoccupied.svg);
 	background-size: cover;
 }
 
-.seats.augmented li:not(.unavailable) {
+.seats.augmented .row li:not(.unavailable) {
 	cursor: pointer;
 }
 
-.seats.augmented li.selected {
+.seats.augmented .row li.selected {
 	background-image: url(seat_selected.svg);
 }
 
-.seats.augmented li.occupied {
+.seats.augmented .row li.occupied {
 	background-image: url(seat_occupied.svg);
 }
 
-.seats.augmented li.vip { /* XXX: crude */
-	margin-bottom: 2.5em;
+.seats.augmented .row li.vip { /* XXX: crude */
+	margin-bottom: 1em; /* extra legroom */
 	background-color: #FFD700;
 	opacity: 0.5;
 }

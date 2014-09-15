@@ -3,42 +3,48 @@
 
 var util = require("./util");
 
-module.exports = function(rows) {
-	var cols = 6; // each row consists of 2 * 3 seats
-	var seats = [];
-	var i;
-	for(i = 0; i < rows * cols; i++) {
-		var id = seat_id(i);
-
-		var vip = i < 5 * cols;
-		var occupied, desc;
-		if(vip) {
-			desc = "reserved for VIPs";
-		} else {
-			occupied = Math.random() < 0.3;
-			desc = occupied ? "occupied" : null;
+module.exports = function(rowCount, colCount, occupancy) {
+	var rows = [];
+	var i, j;
+	for(i = 0; i < rowCount; i++) {
+		var seats = [];
+		for(j = 0; j < colCount; j++) {
+			var id = i * colCount + j;
+			var seat = generateSeat(id, 5 * colCount, occupancy);
+			seats.push(seat);
 		}
-
-		var seat = new Seat(id, desc, vip, occupied);
-		seats.push(seat);
+		rows.push(seats);
 	}
 
 	// preselect random seat
 	var selection;
 	while(!selection) {
-		var index = util.randomInt(0, seats.length - 1);
-		var seat = seats[index];
+		var row = util.randomInt(0, rowCount - 1);
+		var col = util.randomInt(0, colCount - 1);
+		var seat = rows[row][col];
 		if(!seat.unavailable()) {
 			seat.selected = true;
 			selection = seat;
 		}
 	}
 
-	return seats;
+	return rows;
 };
 
-function Seat(id, desc, vip, occupied) {
-	this.id = id;
+function generateSeat(index, vipCount, occupancy) {
+	var vip = index < vipCount;
+	var occupied, desc;
+	if(vip) {
+		desc = "reserved for VIPs";
+	} else {
+		occupied = Math.random() < occupancy;
+		desc = occupied ? "occupied" : null;
+	}
+	return new Seat(index, desc, vip, occupied);
+}
+
+function Seat(index, desc, vip, occupied) {
+	this.id = seatID(index);
 	this.desc = desc;
 	this.vip = !!vip;
 	this.occupied = !!occupied;
@@ -63,7 +69,7 @@ Seat.prototype.unavailable = function() {
 	return !!(this.vip || this.occupied);
 };
 
-function seat_id(index) {
+function seatID(index) {
 	var row = Math.floor(index / 6) + 1;
 	var col = "ABCDEF"[index % 6];
 	return row + col;
