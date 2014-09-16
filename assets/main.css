@@ -45,7 +45,6 @@ input[type=checkbox][disabled],
 }
 
 .seats > li {
-	padding: 0 1em;
 	overflow: auto; /* contain floats */
 }
 
@@ -61,6 +60,7 @@ input[type=checkbox][disabled],
 	float: left;
 	width: 4em;
 	height: 4em;
+	margin: 0 0.2em;
 	line-height: 4em;
 	text-align: center;
 }
