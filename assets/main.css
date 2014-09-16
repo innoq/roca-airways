@@ -127,13 +127,18 @@ input[type=checkbox][disabled],
 /* dev controls */
 
 .debug {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
-	margin: 1em;
+	margin: 0 0 1em 1em;
+	border: 2px solid #BCE8F1;
+	border-width: 0 0 2px 2px;
+	padding: 0.5em;
 	text-align: right;
+	background-color: #D9EDF7;
 }
 
 .debug a {
 	display: block;
+	color: black;
 }
