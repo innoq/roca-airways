@@ -12,8 +12,8 @@
 		fill: #F8F8F8;
 	}
 
-	.grad-start { stop-color: #FEE903; }
-	.grad-stop { stop-color: #C7AD03; }
+	.grad-start { stop-color: #FBF2BA; }
+	.grad-stop { stop-color: #ECCB17; }
 	]]></style>
 	<defs>
 		<linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
