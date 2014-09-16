@@ -18,6 +18,6 @@ if(!svg || !svgFilters) {
 }
 
 // augmentation controls
-$(".seats").fancyControls();
+$(".rows").fancyControls();
 
 }(jQuery));

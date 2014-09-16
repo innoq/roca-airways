@@ -37,26 +37,26 @@ input[type=checkbox][disabled],
 	background-color: #FAFAFA;
 }
 
-.seats,
-.row {
+.rows,
+.seats {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
 
-.seats > li {
+.rows > li {
 	overflow: auto; /* contain floats */
 }
 
-.seats {
+.rows {
 	padding: 0 1em;
 }
 
-.row {
+.seats {
 	overflow: visible; /* avoids clipping and scrolling on focus-scaled seat */
 }
 
-.row li {
+.seats > li {
 	float: left;
 	width: 4em;
 	height: 4em;
@@ -65,11 +65,11 @@ input[type=checkbox][disabled],
 	text-align: center;
 }
 
-.row li:nth-child(6n+4) { /* aisle */
+.seats > li:nth-child(6n+4) { /* aisle */
 	margin-left: 4em;
 }
 
-.row label { /* fill container */
+.seats label { /* fill container */
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -77,40 +77,40 @@ input[type=checkbox][disabled],
 
 /* augemented */
 
-.seats.augmented .unavailable {
+.rows.augmented .unavailable {
 	opacity: 1; /* neutralizes basic version -- XXX: hacky */
 }
 
-.seats.augmented .row li.focused {
+.rows.augmented .seats > li.focused {
 	transform: scale(1.2);
 	-webkit-transform: scale(1.2);
 }
 
-.seats.augmented .row li {
+.rows.augmented .seats > li {
 	margin-bottom: 1em; /* legroom */
 	background-image: url(seat_unoccupied.svg);
 	background-size: cover;
 }
 
-.seats.augmented .row li:not(.unavailable) {
+.rows.augmented .seats > li:not(.unavailable) {
 	cursor: pointer;
 }
 
-.seats.augmented .row li.selected {
+.rows.augmented .seats > li.selected {
 	background-image: url(seat_selected.svg);
 }
 
-.seats.augmented .row li.occupied {
+.rows.augmented .seats > li.occupied {
 	background-image: url(seat_occupied.svg);
 }
 
-.seats.augmented .row li.vip { /* XXX: crude */
+.rows.augmented .seats > li.vip { /* XXX: crude */
 	margin-bottom: 2em; /* extra legroom */
 	background-color: #FFD700;
 	opacity: 0.5;
 }
 
-.seats.augmented label {
+.rows.augmented label {
 	margin-left: -999em;
 }
 

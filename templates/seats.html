@@ -18,10 +18,10 @@
 </p>
 
 <form action="{{ checkInURI }}" method="post" class="cabin">
-	<ul class="seats">
+	<ul class="rows">
 		{% for row in seats %}
 		<li>
-			<ul class="row">
+			<ul class="seats">
 				{% for seat in row %}
 				<li {{ optAttr("class", seat.class()) }} {{
 						optAttr("title", seat.desc) }}>
