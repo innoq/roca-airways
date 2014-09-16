@@ -32,6 +32,11 @@ input[type=checkbox][disabled],
 	text-shadow: 1px 1px 2px #CCC; /* XXX: tacky!? */
 }
 
+.hint {
+	font-size: 90%;
+	color: #777;
+}
+
 .unavailable {
 	opacity: 0.5;
 }
