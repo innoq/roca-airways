@@ -1,9 +1,10 @@
-*ROCAir* is a simple demo application demonstrating the benefits of
+*[ROCAir](http://rocair.herokuapp.com)* is a simple demo application
+demonstrating the benefits of
 [progressive enhancement](https://www.gov.uk/service-manual/making-software/progressive-enhancement)
 for both end users and developers
 
 starting from
-[<abbr title="Plain Old Semantic HTML">POSH</abbr>](http://microformats.org/wiki/posh)
+<a href="http://microformats.org/wiki/posh"><abbr title="Plain Old Semantic HTML">POSH</abbr></a>
 form controls which are augmented by layering CSS and JavaScript on top,
 browsers provide us with various benefits such as focus handling, keyboard
 controls and accessibility - without us having to reinvent the wheel by
