@@ -44,11 +44,8 @@ input[type=checkbox][disabled],
 	list-style-type: none;
 }
 
-.rows > li {
-	overflow: auto; /* contain floats */
-}
-
 .rows {
+	overflow: auto; /* contain floats */
 	padding: 0 1em;
 }
 
