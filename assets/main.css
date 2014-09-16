@@ -4,6 +4,19 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+footer {
+	clear: both;
+	display: block;
+	margin: 2em 0 1em;
+	border-top: 1px solid #CCC;
+	padding-top: 1em;
+	font-size: 90%;
+}
+
+p {
+	margin: 0 0 0.5em;
+}
+
 input[type=submit] {
 	width: 100%;
 }
