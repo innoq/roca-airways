@@ -121,7 +121,8 @@ input[type=checkbox][disabled],
 
 .rows.augmented .seats > li.vip { /* XXX: crude */
 	margin-bottom: 2em; /* extra legroom */
-	background-color: #FFD700;
+	background-color: #FEE903;
+	background-image: url(seat_vip.svg);
 	opacity: 0.5;
 }
 
