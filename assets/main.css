@@ -30,8 +30,9 @@ input[type=checkbox][disabled],
 /* basic */
 
 .cabin {
-	width: 30em; /* corresponds to seats per row + aisle + padding */
+	float: left; /* shrink-wrap */
 	border-radius: 14em; /* corresponds to seats per row + aisle */
+	margin: 1em 0;
 	padding: 14em 0; /* compensate for border radius */
 	background-color: #FAFAFA;
 }
@@ -41,6 +42,11 @@ input[type=checkbox][disabled],
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+}
+
+.seats > li {
+	padding: 0 1em;
+	overflow: auto; /* contain floats */
 }
 
 .seats {
