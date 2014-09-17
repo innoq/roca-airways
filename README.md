@@ -19,3 +19,8 @@ Getting Started
 
 * `npm install` downloads third-party components
 * `./server` launches the application
+
+
+----
+
+licensed under the Apache License, version 2.0
