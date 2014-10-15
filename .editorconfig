@@ -13,3 +13,4 @@ indent_size = 4
 
 [COMMIT_EDITMSG]
 trim_trailing_whitespace = false
+max_line_length = 72
