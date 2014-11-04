@@ -1,6 +1,6 @@
 /*jslint vars: true, white: true */
 
-(function(window, undefined) {
+(function() {
 
 	"use strict";
 
@@ -32,12 +32,16 @@
 					if ( !window.jQuery ) {
 						console.log('local jQuery loaded');
 						Modernizr.load('assets/vendor/jquery.js');
+					} else {
+						console.log('CDN jQuery loaded');
 					}
+
 				}
 			}
 		]);
 	} else {
 		// A fallback like jQuery 1.x could be loaded here.
+		console.log('no jQuery loaded');
 		return;
 	}
 
@@ -116,4 +120,4 @@
 		}
 	]);
 
-}(this));
+}());
