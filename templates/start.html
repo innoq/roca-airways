@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h1>Online check-in</h1>
+
+<p class="lead-text">Welcome to ROCA Airways. You can check in online up to 72 hours before departure!</p>
+
+<form class="checkin-form" action="{{ checkInURI }}" method="post">
+	<div class="form-row">
+		<label for="flight"><strong>Flight number</strong> <span class="annotation">(required)</span></label>
+		<input id="flight" type="text" required="true" aria-required="true"
+			pattern="RC-[0-9]{4}" placeholder="e.g. RC-1234" name="flight" value="" />
+		<p class="error-message"><em>Hint: Please enter a valid flight number, like RC-1234</em>.</p>
+	</div>
+	<div class="form-row">
+		<label for="passenger-name"><strong>Name</strong> <span class="annotation">(required)</span></label>
+		<input type="text" required="true" aria-required="true" id="passenger-name" name="passengerName" />
+		<p class="error-message"><em>Hint: Please enter your full name.</em></p>
+	</div>
+	<div class="form-row">
+		<button class="button" type="submit">Check-in</button>
+	</div>
+</form>
+
+<p>
+	<strong>Please note:</strong> Once you have checked in, you can make changes to a
+	flight (e.g. registering luggage) only at the airport counter.
+</p>
+
+{% endblock %}

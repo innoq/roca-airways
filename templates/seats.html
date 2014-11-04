@@ -6,42 +6,87 @@
 %}{% endmacro %}
 
 {% block body %}
-<p>
-	Thank you for flying <i class="organization">ROCAir</i>. Web check-in for
-	flight <i>{{ flightID }}</i> is now available - please select your seat
-	below.
+
+<h1>Online check-in</h1>
+
+<p class="lead-text">
+	Thank you for flying ROCA Airways. Web check-in for
+	flight <i>{{ flightID }}</i> is now available.
 </p>
 
-<p class="vis-alt">
-	Rows are numbered from nose to tail. A and F are window, C and D aisle
-	seats. A-C are on the left, D-F on the right.
-</p>
-
-<p class="hint">
+<p class="annotation">
 	Note that most browsers allow navigating the selection via the tab and
 	arrow keys.
 </p>
 
-<form action="{{ checkInURI }}" method="post" class="cabin">
-	<ul class="rows">
-		{% for row in seats %}
-		<li>
-			<ul class="seats">
-				{% for seat in row %}
-				<li {{ optAttr("class", seat.class()) }} {{
-						optAttr("title", seat.desc) }}>
-					<label>
-						<input type="radio" name="seat" value="{{ seat.id }}" {{
-								optAttr("disabled", seat.unavailable()) }} {{
-								optAttr("checked", seat.selected) }}>
-						{{ seat.label() }}
-					</label>
-				</li>
+<section class="details">
+	<h2>Flight Details</h2>
+	<dl id="flight-details">
+		<dt>Flight</dt>
+		<dd>{{ flightID }}</dd>
+		<dt>From</dt>
+		<dd>Cologne Bonn</dd>
+		<dt>To</dt>
+		<dd>Berlin Tegel</dd>
+		<dt>Departure</dt>
+		<dd>{{ departure }}</dd>
+		<dt>Arrival</dt>
+		<dd>{{ arrival }}</dd>
+	</dl>
+</section>
+
+<form action="{{ checkInURI }}" method="post" class="plane">
+	<section>
+		<h2>Seat Selection</h2>
+		<p class="lead-text">
+			We preselected the seat
+			<a href="#seat-{{ selectedSeat.label() }}" >{{ selectedSeat.label() }}</a>
+			for you. Feel free to select another seat below or <a href="#passenger-details">skip ahead</a>
+			to finish the check-in.
+		</p>
+		<p class="vis-alt">
+			Rows are numbered from nose to tail. A and F are window, C and D aisle
+			seats. A-C are on the left, D-F on the right.
+		</p>
+	</section>
+
+	<input type="hidden" name="passengerName" value="{{ passengerName }}">
+	<div data-toggle="collapsable" class="plane-body">
+		<div class="plane-cabin">
+			<ul class="rows">
+				{% for row in seats %}
+					<li>
+						<ul class="seats">
+							{% for seat in row %}
+								<li title="{{ seat.label() + ' (' + seat.desc + ')' }}" class="seat {{seat.class()}} with-tooltip">
+									<label>
+										<input type="radio" name="seat" id="seat-{{ seat.id }}" value="{{ seat.id }}" {{
+											optAttr("disabled", seat.unavailable()) }} {{
+											optAttr("checked", seat.selected) }}>
+										{{ seat.label() }}
+									</label>
+								</li>
+							{% endfor %}
+						</ul>
+					</li>
 				{% endfor %}
 			</ul>
-		</li>
-		{% endfor %}
-	</ul>
-	<input type="submit" value="confirm selection">
+		</div>
+	</div>
+
+	<section class="details">
+		<h2>Passenger Details</h2>
+		<dl id="passenger-details">
+			<dt>Name</dt>
+			<dd>{{ passengerName }}</dd>
+			<dt>Class</dt>
+			<dd>Economy</dd>
+			<dt>Seat</dt>
+			<dd data-receiver="seat">{{ selectedSeat.label() }}</dd>
+		</dl>
+	</section>
+
+	<input class="button full-width" type="submit" value="Confirm check-in">
 </form>
+
 {% endblock %}

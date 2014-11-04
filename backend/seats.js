@@ -28,17 +28,17 @@ module.exports = function(rowCount, colCount, occupancy) {
 		}
 	}
 
-	return rows;
+	return { selectedSeat: selection, seats: rows };
 };
 
 function generateSeat(index, vipCount, occupancy) {
 	var vip = index < vipCount;
 	var occupied, desc;
 	if(vip) {
-		desc = "reserved for VIPs";
+		desc = "Business Class";
 	} else {
 		occupied = Math.random() < occupancy;
-		desc = occupied ? "occupied" : null;
+		desc = occupied ? "Occupied" : "Free";
 	}
 	return new Seat(index, desc, vip, occupied);
 }

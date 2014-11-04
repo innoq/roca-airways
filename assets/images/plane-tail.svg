@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1 (8751) - http://www.bohemiancoding.com/sketch -->
+    <title>Roca Airways 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M-118.78174,55.0924533 C-81.1568717,-72.457662 -24.9704588,39.5535315 -9.09590127,177.357732 C6.77865623,315.161932 17.2608309,459.758102 17.2608309,459.758102 L-254.82431,459.758102 C-254.82431,459.758102 -196.812526,319.620581 -118.78174,55.0924533 Z" id="Triangle-1" stroke="#EB6060" stroke-width="2" stroke-linecap="square" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(-118.781740, 229.462642) rotate(-105.000000) translate(118.781740, -229.462642) "></path>
+        <path d="M526.34126,58.617928 C563.966128,-68.9321872 620.15254,43.0790062 636.027098,180.883207 C651.901655,318.687407 662.38383,463.283576 662.38383,463.283576 L390.298689,463.283576 C390.298689,463.283576 448.310473,323.146055 526.34126,58.617928 Z" id="Triangle-2" stroke="#EB6060" stroke-width="2" stroke-linecap="square" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(526.341260, 232.988117) scale(-1, 1) rotate(-105.000000) translate(-526.341260, -232.988117) "></path>
+        <path d="M1,382 C1,319.566732 136,1.01991461e-13 200,1.13686838e-13 C264,1.25382215e-13 399,328.136678 399,382" id="Line-3" stroke="#EB6060" stroke-width="2" stroke-linecap="square" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(200.000000, 191.000000) rotate(-180.000000) translate(-200.000000, -191.000000) "></path>
+    </g>
+</svg>

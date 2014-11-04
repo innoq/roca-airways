@@ -1,47 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>{{ title }}</title>
 	{% if includeCSS %}
-	<link rel="stylesheet" href="/assets/main.css">
+		<link rel="stylesheet" href="/assets/styles/normalize.css">
+		<link rel="stylesheet" href="/assets/styles/main.css">
+	{% endif %}
+	{% if includeJS %}
+		<script src="/assets/vendor/modernizr.js"></script>
 	{% endif %}
 </head>
 
-<body>
-	<h1>{{ title }}</h1>
-	{% block body %}{% endblock %}
+<body class="container">
 
-	{% if devLinks %}
-	<div class="debug">
-		{% for link in devLinks %}
-		<a href="{{ link.uri }}" title="{{ link.desc }}">{{ link.label }}</a>
-		{% endfor %}
-	</div>
-	{% endif %}
+	<header role="banner" class="company-header">
+		<a class="logo" href="/">
+			<img src="/assets/images/rocair-logo-3x.png" alt="ROCA Airways Logo" width="250px" height="50px">
+		</a>
+	</header>
 
-	<footer>
+	<main role="main">
+		{% block body %}{% endblock %}
+	</main>
+
+	<hr class="fallback">
+
+	<footer role="contentinfo" class="seperator">
 		<p>
-			<i class="organization">ROCAir</i> is a simple demo application
+			<span class="organization">ROCA</span> <i>Airways</i> online check-in is a simple demo application
 			demonstrating the
 			<a href="https://github.com/innoq/rocair#readme">benefits</a> of
 			<a href="https://www.gov.uk/service-manual/making-software/progressive-enhancement">
 				progressive enhancement
 			</a>
-			for both end users and developers
+			for both end users and developers. Sources of this application can be found at
+			<a href="https://github.com/innoq/rocair">github</a>. Feature and pull-requests are welcome, see the
+			<a href="https://github.com/innoq/rocair/issues">issue tracker</a> for further details.
 		</p>
+
 		<p>
-			created by <a href="https://www.innoq.com">innoQ</a>, though based
-			on the collective wisdom of web advocates across the globe
+			Created by <a href="https://www.innoq.com">innoQ</a>, though based
+			on the collective wisdom of web advocates across the globe.
 		</p>
+
+		{% if devLinks %}
+		<hr class="fallback">
+		<div class="debug-panel seperator">
+			<p><i>You can toggle styling and scripting below to see progressive enhancement in action.</i></p>
+			<div class="button-bar">
+			{% for link in devLinks %}
+				<a class="button secondary" href="{{ link.uri }}" title="{{ link.desc }}">{{ link.label }}</a>
+			{% endfor %}
+			</div>
+		</div>
+		{% endif %}
 	</footer>
 
 	{% if includeJS %}
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-	<script src="/assets/fancy_controls.js"></script>
-	<script src="/assets/main.js"></script>
+    	<script src="/assets/scripts/main.js"></script>
 	{% endif %}
+
 </body>
 
 </html>
