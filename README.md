@@ -1,21 +1,15 @@
-*[ROCAir](http://rocair.herokuapp.com)* is a simple demo application
+# About
+
+The [ROCA Airways online check-in](http://roca-airways.herokuapp.com) is a small demo application
 demonstrating the benefits of
 [progressive enhancement](https://www.gov.uk/service-manual/making-software/progressive-enhancement)
-for both end users and developers
+for both end users and developers. It is build upon the initial seat picking demo [ROCAir](https://github.com/innoq/rocair) and provides additional examples of how features like client-side validation, AJAX calls or inter-component communication can be implemented based on the principles of progressive enhancement.
 
-starting from
-<a href="http://microformats.org/wiki/posh"><abbr title="Plain Old Semantic HTML">POSH</abbr></a>
-form controls which are augmented by layering CSS and JavaScript on top,
-browsers provide us with various benefits such as focus handling, keyboard
-controls and accessibility - without us having to reinvent the wheel by
-implementing such functionality ourselves (usually in sub-par fashion)
-
-created by [innoQ](https://www.innoq.com), though based on the collective
-wisdom of web advocates across the globe
+Created by [innoQ](https://www.innoq.com), though based on the collective
+wisdom of web advocates across the globe.
 
 
-Getting Started
----------------
+# Getting Started
 
 * `npm install` downloads third-party components
 * `./server` launches the application
@@ -23,4 +17,4 @@ Getting Started
 
 ----
 
-licensed under the Apache License, version 2.0
+Licensed under the Apache License, version 2.0.
