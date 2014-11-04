@@ -58,7 +58,7 @@
 					<li>
 						<ul class="seats">
 							{% for seat in row %}
-								<li title="{{ seat.label() + ' (' + seat.desc + ')' }}" class="seat {{seat.class()}} with-tooltip">
+								<li data-emitter="seat" data-toggle="tooltip" title="{{ seat.label() + ' (' + seat.desc + ')' }}" class="seat {{seat.class()}} with-tooltip">
 									<label>
 										<input type="radio" name="seat" id="seat-{{ seat.id }}" value="{{ seat.id }}" {{
 											optAttr("disabled", seat.unavailable()) }} {{
