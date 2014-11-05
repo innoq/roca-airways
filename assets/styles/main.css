@@ -49,7 +49,7 @@ label, strong, dt {
 }
 
 .annotation {
-	color: #AAA;
+	color: #777;
 	font-style:	italic;
 	font-weight: 300;
 }
@@ -229,7 +229,7 @@ input[type=checkbox][disabled],
 
 .form-row input[type=text] {
 	padding: 0.5em 1em;
-	border: 2px solid #ddd;
+	border: 2px solid #BBB;
 	-webkit-appearance: none;
 	border-radius: 2px;
 	transition: all 0.25s ease-in-out;
@@ -244,7 +244,7 @@ input[type=checkbox][disabled],
 
 
 .form-row input[type=text]:focus {
-	border: 2px solid #aaa;
+	border: 2px solid #777;
 	outline: none;
 }
 
