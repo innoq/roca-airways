@@ -8,6 +8,8 @@ for both end users and developers. It is build upon the initial seat picking dem
 Created by [innoQ](https://www.innoq.com), though based on the collective
 wisdom of web advocates across the globe.
 
+Originally based on [ROCAir](https://github.com/innoq/rocair), which takes a more minimalist approach.
+
 
 # Getting Started
 
